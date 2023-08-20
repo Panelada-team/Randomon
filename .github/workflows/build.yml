@@ -12,8 +12,7 @@ jobs:
         
           - name: Set Up RGBDS
             run: |
-                make
-                sudo make install
+                sudo apt-get install rgbds
             
           - name: Build GB Game
             run: |
