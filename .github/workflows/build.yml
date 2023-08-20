@@ -1,0 +1,30 @@
+name: build
+
+on: workflow_dispatch
+
+jobs:
+    build_gameboy:
+        runs-on: ubuntu-latest
+        
+        steps:
+          - name: Checkout Code
+            uses: actions/checkout@v3
+        
+          - name: Set Up RGBDS
+            uses: actions/setup-python@v2
+            with:
+                python-version: '3.x'
+                
+          - run: pip install git+https://github.com/bentley/rgbds@master
+        
+          - name: Build GB Game
+            run: |
+                rgbasm -o main.o source/main.asm
+                rgblink -o main.gb main.o
+                rgbfix -v -p 0 main.gb
+                
+          - name: Upload Artifact
+            uses: actions/upload-artifact@v3
+            with:
+                name: Game
+                path: main.gb
