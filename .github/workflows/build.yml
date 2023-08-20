@@ -11,12 +11,10 @@ jobs:
             uses: actions/checkout@v3
         
           - name: Set Up RGBDS
-            uses: actions/setup-python@v2
-            with:
-                python-version: '3.x'
-                
-          - run: pip install git+https://github.com/bentley/rgbds@master
-        
+            run: |
+                make
+                sudo make install
+            
           - name: Build GB Game
             run: |
                 rgbasm -o main.o source/main.asm
