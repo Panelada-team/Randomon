@@ -14,11 +14,8 @@ jobs:
             uses: gbdev/rgbds@v0.6.1
             
           - name: Build GBC Game
-            run: |
-                rgbasm -o main.o source/main.asm
-                rgblink -o main.gbc main.o
-                rgbfix -v -p 0 main.gbc
-                
+            run: rgbasm source/main.asm --output main.gb
+            
           - name: Upload Artifact
             uses: actions/upload-artifact@v3
             with:
