@@ -11,17 +11,16 @@ jobs:
             uses: actions/checkout@v3
         
           - name: Set Up RGBDS
-            run: |
-                sudo apt-get install libpng-dev
+            uses: gbdev/rgbds@v1
             
-          - name: Build GB Game
+          - name: Build GBC Game
             run: |
                 rgbasm -o main.o source/main.asm
-                rgblink -o main.gb main.o
-                rgbfix -v -p 0 main.gb
+                rgblink -o main.gbc main.o
+                rgbfix -v -p 0 main.gbc
                 
           - name: Upload Artifact
             uses: actions/upload-artifact@v3
             with:
                 name: Game
-                path: main.gb
+                path: main.gbc
