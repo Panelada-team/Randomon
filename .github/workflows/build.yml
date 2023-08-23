@@ -12,7 +12,7 @@ jobs:
         
           - name: Set Up RGBDS
             run: |
-                sudo apt-get install rgbds
+                sudo apt-get install libpng-dev
             
           - name: Build GB Game
             run: |
