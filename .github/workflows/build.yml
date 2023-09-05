@@ -14,10 +14,10 @@ jobs:
             uses: gbdev/rgbds@v0.6.1
             
           - name: Build GBC Game
-            run: rgbasm source/main.asm --output main.gb
+            run: rgbasm source/main.asm main.gb
             
           - name: Upload Artifact
             uses: actions/upload-artifact@v3
             with:
                 name: Game
-                path: main.gbc
+                path: main.gb
