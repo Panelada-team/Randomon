@@ -11,7 +11,7 @@ jobs:
             uses: actions/checkout@v3
         
           - name: Set Up RGBDS
-            uses: gbdev/rgbds@v0.5.1
+            run: pacman -S rgbds
             
           - name: Build GBC Game
             run: |
